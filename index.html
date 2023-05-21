@@ -1,0 +1,326 @@
+<html>
+<head>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f8f8f8;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #222222, #444444);
+      color: white;
+      padding: 10px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav {
+      display: flex;
+      list-style: none;
+    }
+
+    .nav li {
+      margin-left: 20px;
+    }
+
+    .nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .main {
+      display: flex;
+      flex-grow: 1;
+    }
+
+    .sidebar {
+      width: 350px;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    .sidebar h3 {
+      padding: 10px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      padding: 10px;
+      border-bottom: 1px solid #cccccc;
+    }
+
+    .sidebar a {
+      color: black;
+      text-decoration: none;
+    }
+
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: white;
+    }
+
+    .content h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .chatbot {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      width: 500px;
+      height: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .chatbot-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: linear-gradient(to right, #222222, #444444);
+      color: white;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 10px;
+    }
+
+    .chatbot-logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .chatbot-close {
+      cursor: pointer;
+    }
+
+    .chatbot-body {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      height: 310px;
+      /* overflow-y: scroll; */
+      /* padding: 10px; */
+      gap: 30px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .chatbot-message {
+      display: flex;
+      align-items: center;
+      margin: 10px;
+    }
+
+    .chatbot-message.bot {
+      flex-direction: row-reverse;
+    }
+
+    .chatbot-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .chatbot-text {
+      max-width: 200px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #f0f0f0;
+    }
+
+    .chatbot-text.bot {
+      background-color: #e0e0e0;
+    }
+
+    .chatbot-input {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+
+    .chatbot-input input {
+      flex-grow: 1;
+      padding: 10px;
+      margin-right: 5px;
+      border-radius: 8px;
+      border: 1px solid #cccccc;
+    }
+
+    .chatbot-input button {
+      width: 80px;
+      height: 40px;
+      border-radius: 5px;
+      border: none;
+      background-color: #222222;
+      color: white;
+      visibility: visible;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    /* Gradients */
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: rgba(0, 0, 0, 0);
+    }
+    /* .gradient-text-pink {
+  @apply bg-gradient-to-r from-orange-500 to-pink-500;
+  background-clip: text;
+  color:rgba(0,0,0,0);
+  -webkit-background-clip:text;
+} */
+.gradient-text-pink {
+  background: linear-gradient(to right, orange, red);
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+}
+
+    .gradient-text-green {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: rgba(0, 0, 0, 0);
+    }
+    .signUp_btn{
+  background: linear-gradient(45deg, orange, red, purple, blue);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+  
+
+    .gradient-slide {
+      background-size: 200% 200%;
+      animation: gradiant-move 2s ease-in-out infinite;
+      background-clip: text;
+      -webkit-background-clip: text;
+      transition: color .2s ease-in-out;
+    }
+
+    .gradient-slide:hover {
+      color: rgba(0, 0, 0, 0);
+    }
+
+    @keyframes gradiant-move {
+      0% {
+        background-position: right bottom;
+      }
+      100% {
+        background-position: left top;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="logo">WebGPT</div>
+    <ul class="nav">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Courses</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Login</a></li>
+      <li><a href="#">Subscribe</a></li>
+    </ul>
+  </div>
+  <div class="main">
+    <div class="sidebar">
+      <h3>Courses</h3>
+      <ul>
+        <li><a href="#">Next.js - The Full Course</a></li>
+        <li><a href="#">React Supabase Full Course</a></li>
+        <li><a href="#">Modern JavaScript Full Course</a></li>
+        <li><a href="#">Next.js Firebase Full Course</a></li>
+        <li><a href="#">Flutter Firebase</a></li>
+        <li><a href="#">Dart 101</a></li>
+        <li><a href="#">Git & GitHub Full Course</a></li>
+        <li><a href="#">React - The full course</a></li>
+        <li><a href="#">VS Code Magic Tricks Course</a></li>
+        <li><a href="#">Stripe Payments JavaScript Course</a></li>
+        <li><a href="#">Firebase Security Course</a></li>
+        <li><a href="#">The Angular Firebase Project Course</a></li>
+        <li><a href="#">Firestore Data Modeling</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <h1>Welcome to WebGPT!</h1>
+      <p>WebGPT is a website that helps you learn web development faster and easier. You can watch short videos,
+        practice coding, and chat with a friendly AI assistant that can answer your questions and give you
+        feedback.</p>
+      <p>Whether you want to learn React, Firebase, Next.js, or any other modern web technology, WebGPT has you
+        covered. You can choose from a variety of courses that suit your level and interest.</p>
+      <p>Ready to start learning? Sign up now and get access to all the courses and features for free!</p>
+      <button
+      class="signUp_btn"
+      >Sign up now!</button>
+    </div>
+  </div>
+  <div class="chatbot">
+    <div class="chatbot-header">
+      <div class="chatbot-logo">ChatBot</div>
+      <div class="chatbot-close">&#10006;</div>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-message bot">
+        <img class="chatbot-avatar" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="Avatar">
+        <div class="chatbot-text bot">Hello! How can I assist you today?</div>
+      </div>
+      <div class="chatbot-message">
+        <img class="chatbot-avatar" src="https://cdn.iconscout.com/icon/free/png-256/avatar-370-456322.png" alt="Avatar">
+        <div class="chatbot-text">I'm looking for a React course. Can you recommend one?</div>
+      </div>
+    </div>
+    <div class="chatbot-input">
+      <input type="text" placeholder="Type your message...">
+      <button>Send</button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
